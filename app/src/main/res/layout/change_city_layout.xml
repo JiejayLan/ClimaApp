@@ -38,6 +38,17 @@
         android:textColor="@color/black"
         android:textSize="30sp" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/get_weather"
+        android:textColor="@color/white"
+        android:textSize="50sp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/getWeatherTV"
+        android:layout_below="@+id/backButton"
+        android:layout_centerHorizontal="true"/>
+
     <RadioGroup
         android:layout_width="match_parent"
         android:id="@+id/radioGroup"
@@ -59,7 +70,7 @@
             android:textColor="@color/white"
             android:textSize="24sp"
             android:textStyle="bold"
-            android:onClick="rbClick"
+            android:onClick="radioClick"
             android:buttonTint="@color/white"
             />
 
@@ -68,7 +79,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:onClick="rbClick"
+            android:onClick="radioClick"
             android:text="Fahrenheit"
             android:textColor="@color/white"
             android:textSize="24sp"
