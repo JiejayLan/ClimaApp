@@ -4,21 +4,41 @@ import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ChangeCityController extends AppCompatActivity {
-
+    RadioGroup radioGroup;
+    RadioButton radioButton;
+    RadioButton radioButton1;
+    RadioButton radioButton2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.change_city_layout);
 
+        RadioGroup radiogroup;
+        radiogroup=(RadioGroup)findViewById(R.id.radioGroup);
+        Intent myIntent = getIntent();
+        String tempType = myIntent.getStringExtra("temperature");
+
+        //update the radiobutton
+        if(tempType.equals("Centigrade"))
+            radiogroup.check(R.id.radioButton);
+        else
+            radiogroup.check(R.id.radioButton2);
+
+
+
         final EditText editTextField = findViewById(R.id.queryET);
-        ImageButton backButton = findViewById(R.id.backButton2);
+        ImageButton backButton = findViewById(R.id.backButton);
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -33,15 +53,19 @@ public class ChangeCityController extends AppCompatActivity {
         editTextField.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                Intent myIntent = getIntent();
+                String tempType = myIntent.getStringExtra("temperature");
 
                 String newCity = editTextField.getText().toString();
                 Intent newCityIntent = new Intent(ChangeCityController.this, WeatherController.class);
 
                 // Adds what was entered in the EditText as an extra to the intent.
                 newCityIntent.putExtra("City", newCity);
+                newCityIntent.putExtra("temp", tempType);
 
                 // We started this activity for a result, so now we are setting the result.
-                setResult(Activity.RESULT_OK, newCityIntent);
+//                setResult(Activity.RESULT_OK, newCityIntent);
+                startActivity(newCityIntent);
 
                 // This destroys the ChangeCityController.
                 finish();
@@ -50,4 +74,20 @@ public class ChangeCityController extends AppCompatActivity {
         });
 
     }
+
+    public void rbClick(View v){
+        Intent myIntent = getIntent();
+        String newcity = myIntent.getStringExtra("City");
+        String tempType = myIntent.getStringExtra("temperature");
+
+        int radioBUttionid = radioGroup.getCheckedRadioButtonId();
+        radioButton = findViewById(radioBUttionid);
+        Intent intent = new Intent(this, WeatherController.class);
+        intent.putExtra("temp", radioButton.getText());
+
+        intent.putExtra("City", newcity);
+        startActivity(intent);
+
+    }
+
 }

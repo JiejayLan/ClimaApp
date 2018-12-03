@@ -62,12 +62,14 @@ public class WeatherController extends AppCompatActivity {
     TextView mCityLabel;
     ImageView mWeatherImage;
     TextView mTemperatureLabel;
+    String City="new york";               //Jie Lan-which city
+    String temperatureType="Centigrade"; //Jie Lan-what kind of temperature
 
     // Declaring a LocationManager and a LocationListener here:
     LocationManager mLocationManager;
     LocationListener mLocationListener;
 
-    private String City;
+//    private String City;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,7 +89,8 @@ public class WeatherController extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent myIntent = new Intent(WeatherController.this, ChangeCityController.class);
-
+                myIntent.putExtra("City", City);
+                myIntent.putExtra("temperature", temperatureType);
                 // Using startActivityForResult since we just get back the city name.
                 // Providing an arbitrary request code to check against later.
                 startActivityForResult(myIntent, NEW_CITY_CODE);
@@ -110,10 +113,9 @@ public class WeatherController extends AppCompatActivity {
             }
         });
         Log.d(LOGCAT_TAG,"City Value: "+City);
-        if (City != null){
-            getWeatherForNewCity(City);
-        }
-
+//        if (City != null){
+//            getWeatherForNewCity(City);
+//        }
     }
 
 
@@ -122,8 +124,24 @@ public class WeatherController extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        Log.d(LOGCAT_TAG, "onResume() called");
-        if(mUseLocation) getWeatherForCurrentLocation();
+        Log.d(LOGCAT_TAG, "onResume() called"+mUseLocation);
+//        if(mUseLocation) getWeatherForCurrentLocation();
+        Bundle bundle = getIntent().getExtras();
+        if(bundle != null)
+            temperatureType = bundle.getString("temp");
+        if(temperatureType==null)
+            temperatureType="Centigrade";
+
+        Intent myIntent = getIntent();
+        String newcity = myIntent.getStringExtra("City");
+        if(newcity==null){
+//            getWeatherForCurrentLocation();
+            getWeatherForNewCity(City);
+        }else{
+            City = newcity;
+            temperatureType = myIntent.getStringExtra("temp");
+            getWeatherForNewCity(City);
+        }
     }
 
     // Freeing up resources when the app enters the paused state.
@@ -132,6 +150,7 @@ public class WeatherController extends AppCompatActivity {
         super.onPause();
         Log.d(LOGCAT_TAG, "onPause() called");
         if (mLocationManager != null) mLocationManager.removeUpdates(mLocationListener);
+
     }
 
     // Callback received when a new city name is entered on the second screen.
@@ -327,7 +346,14 @@ public class WeatherController extends AppCompatActivity {
 
     // Updates the information shown on screen.
     private void updateUI(WeatherDataModel weather) {
-        mTemperatureLabel.setText(weather.getTemperature());
+        //Jie Lan-this part is swich between °C and °F
+        if(temperatureType.equals("Centigrade")){
+            mTemperatureLabel.setText(Integer.parseInt(weather.getTemperature())+"°C");
+        }
+        else  {
+
+            mTemperatureLabel.setText(Integer.parseInt(weather.getTemperature())*9/5+32+"°F");
+        }
         mCityLabel.setText(weather.getCity());
 
         // Update the icon based on the resource id of the image in the drawable folder.
