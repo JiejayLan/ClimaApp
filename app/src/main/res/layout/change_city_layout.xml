@@ -29,7 +29,7 @@
 
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="171dp"
+        android:layout_marginTop="290dp"
         android:background="@color/white"
         android:gravity="center_vertical|center_horizontal"
         android:hint="@string/default_query"
@@ -38,54 +38,45 @@
         android:textColor="@color/black"
         android:textSize="30sp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/get_weather"
-        android:textColor="@color/white"
-        android:textSize="50sp"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/getWeatherTV"
-        android:layout_below="@+id/backButton"
-        android:layout_centerHorizontal="true"/>
-
     <RadioGroup
-        android:layout_width="match_parent"
         android:id="@+id/radioGroup"
+        android:layout_width="match_parent"
         android:layout_height="235dp"
         android:layout_alignTop="@+id/queryET"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="-1dp"
         android:layout_marginLeft="-1dp"
-        android:layout_marginTop="113dp"
-        android:layout_marginBottom="94dp"
+        android:layout_marginTop="-165dp"
+        android:layout_marginBottom="392dp"
+        android:checkedButton="@+id/radioButton"
+
         android:orientation="horizontal">
+
 
         <RadioButton
             android:id="@+id/radioButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:buttonTint="@color/white"
+            android:onClick="radioClick"
             android:text="Centigrade"
+            android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="24sp"
-            android:textStyle="bold"
-            android:onClick="radioClick"
-            android:buttonTint="@color/white"
-            />
+            android:textStyle="bold" />
 
         <RadioButton
             android:id="@+id/radioButton2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:buttonTint="@color/white"
             android:onClick="radioClick"
             android:text="Fahrenheit"
             android:textColor="@color/white"
             android:textSize="24sp"
-            android:textStyle="bold"
-            android:buttonTint="@color/white"
-            />
+            android:textStyle="bold" />
     </RadioGroup>
 
 </RelativeLayout>
