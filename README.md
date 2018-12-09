@@ -1,31 +1,14 @@
-# Pre-work - *SmarTips*
+**ClimaApp** is a weather checker application for Android.
 
-**SmarTips** is a tip calculator application for iOS.
-
-Submitted by: **Jie Lan/ Jinyan Lin**
-
-Time spent: **30** hours spent in total
 
 ## User Stories
 
 The following **required** functionality is complete:
 
-* User can enter a bill amount, choose a tip percentage and people, and see the tip, each and total values.
+* main layout display the temperature, visbility and humidity of current city
+* User can change city, theme and theme through the setting page
+* On history user can check the history temperature in the pass 30 days
 
-The following **optional** features are implemented:
-
-*  Settings page to change the default tip percentage.
-*  Add a light/dark color theme to the settings page. 
-*  Remembering the bill amount across app restarts (if <10mins)
-*  Using locale-specific currency and currency thousands separators.
-*  Making sure the keyboard is always visible and the bill amount is always the first responder. This way the user doesn't have to tap anywhere to use this app. Just launch the app and start typing.
-*  Improve the UI design with different custom icons.
-*  add UI animation:a damping infomarion view
-
-The following **additional** features are implemented:
-
-*  An update button links to the app store.
-*  Create an app icon and lauching screen
 
 ## Video Walkthrough 
 
