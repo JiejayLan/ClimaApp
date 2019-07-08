@@ -1,28 +1,27 @@
 **ClimaApp** is a weather checker application for Android.
 
-
 ## User Stories
 
 The following **required** functionality is complete:
 
-* main layout display the temperature, visbility and humidity of current city
-* User can change city, theme and theme through the setting page
-* On history user can check the history temperature in the pass 30 days
+- main layout display the temperature, visbility and humidity of current city
+- User can change city, theme and theme through the setting page
+- On history user can check the history temperature in the pass 30 days
 
-
-## Video Walkthrough 
+## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-<img src='image2.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='demo.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
 Describe any challenges encountered while building the app.
-* I never learn swift before, so I have to start learning swift from beginning in a short time.
-* When I try to develop the UI of the app, I need to use photoshop, which looks like is not a computer science field.
+
+- I never learn swift before, so I have to start learning swift from beginning in a short time.
+- When I try to develop the UI of the app, I need to use photoshop, which looks like is not a computer science field.
 
 ## License
 
